@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
-
+import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 export default function App() {
 
   const [enteredGoal, setEnteredGoal] = useState('');
@@ -17,21 +18,11 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.inputContainer}>
-        <TextInput 
-          placeholder="Course Goal" 
-          style={styles.input}
-          onChangeText={goalInputHandler}
-          value={enteredGoal}/>
-        <Button title="ADD" onPress={addGoalHandler}/>
-      </View>
+      <GoalInput placeholder="Course Goal" changeText={goalInputHandler} value={enteredGoal} title="Add" press={addGoalHandler}/>
       <FlatList
       keyExtractor={(item, index) => item.key} 
         data={courseGoals} 
-        renderItem={itemData => 
-        <View style={styles.listItems}>
-          <Text>{itemData.item.value}</Text>
-        </View>
+        renderItem={itemData => <GoalItem title={itemData.item.value} />
         }/>
     </View>
   );
@@ -40,24 +31,5 @@ export default function App() {
 const styles = StyleSheet.create({
   screen: {
     padding: 50
-  },
-  input: {
-    width: '80%', 
-    borderBottomColor: 'black', 
-    borderBottomWidth: 1, 
-    padding: 10 
-  },
-  inputContainer: {
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    alignItems: 'center'
-  },
-  listItems: {
-    padding: 10,
-    marginVertical: 10,
-    backgroundColor: '#ccc',
-    borderColor: 'black',
-    borderWidth: 1
-     
   }
 });
