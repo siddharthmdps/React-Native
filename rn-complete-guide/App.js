@@ -34,7 +34,7 @@ export default function App() {
         data={courseGoals} 
         renderItem={itemData => <GoalItem id={itemData.item.key} onDelete={removeGoalHandler} title={itemData.item.value} />
         }/>
-    </View>
+    </View> 
   );
 }
 
