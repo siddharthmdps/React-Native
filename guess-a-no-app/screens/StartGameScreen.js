@@ -11,7 +11,7 @@ const StartGameScreen = props => {
             <Text style={styles.title}>Start a New Game</Text>
             <Card style = {styles.inputContainer}>
                 <Text>Select a Number: </Text>
-                <Input />
+                <Input style={styles.input}/>
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}><Button color={Colors.accent} title="Reset" onPress={() => {}}/></View>
                     <View style={styles.button}><Button color={Colors.primary} title="Confirm" onPress={() => {}}/></View>
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 100
-    }
+    },
+    
 });
 
 export default StartGameScreen;
